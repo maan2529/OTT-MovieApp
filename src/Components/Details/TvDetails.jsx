@@ -21,11 +21,12 @@ const TvDetails = () => {
 
   }
 
+
   useEffect(() => {
     dispatch(asyncloadTv(id))
 
     return () => {
-      dispatch(removetv())
+      dispatch(removetv(id))
     }
   }, [id])
 
@@ -134,6 +135,9 @@ const TvDetails = () => {
 
 
         </div>
+
+
+        {/* seasons  */}
         <div className='px-12'>
           {tvData && tvData?.recommendations.length > 0 && <div className='mt-[5vw] w-[99.5%] px-2 '>
             <hr className='text-zinc-200 ' />
@@ -141,7 +145,19 @@ const TvDetails = () => {
             {tvData?.recommendations ? <HorizontalCards trainding={tvData?.recommendations} handleCategory={handleCategory} heading={false} /> :
               <h1 className='text-3xl '>No Recommendations Available </h1>}
 
-          </div>}</div>
+          </div>}
+          </div>
+
+        {/* Recomendations */}
+        <div className='px-12'>
+          {tvData && tvData?.recommendations.length > 0 && <div className='mt-[5vw] w-[99.5%] px-2 '>
+            <hr className='text-zinc-200 ' />
+            <h1 className='mt-5 text-3xl font-bold text-white ml-5'>Recomendations & similar stuff</h1>
+            {tvData?.recommendations ? <HorizontalCards trainding={tvData?.recommendations} handleCategory={handleCategory} heading={false} /> :
+              <h1 className='text-3xl '>No Recommendations Available </h1>}
+
+          </div>}
+          </div>
 
       </div >
       <Outlet />

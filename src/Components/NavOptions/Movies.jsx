@@ -51,7 +51,6 @@ const Movies = () => {
                         <p className='mr-4'>Movies (<small>{category}</small>)</p>
                         {/* isko ek line me lana hai  */}
                     </div>
-
                 </div>
                 <div className='relative  right flex justify-end items-center gap-5 h-full w-[60%]'>
                     <Topnav />

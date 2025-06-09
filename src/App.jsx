@@ -13,6 +13,7 @@ import MovieDetails from './Components/Details/MovieDetails'
 import TvDetails from './Components/Details/TvDetails'
 import PersonsDetails from './Components/Details/PersonsDetails'
 import Trailer from './Components/Details/Trailer'
+import NotFound from './Components/NotFound'
 function App() {
   return (
     <div className='h-screen w-screen bg-[#1F1E24] flex'>
@@ -28,11 +29,14 @@ function App() {
 
         <Route path='/tvshows' element={<TvShows />} />
 
-        <Route path='/tvshows/details/:id' element={<TvDetails />} />
-        <Route path='/tvshows/details/:id/trailer' element={<Trailer />} />
+        <Route path='/tvshows/details/:id' element={<TvDetails />} >
+          <Route path='/tvshows/details/:id/trailer' element={<Trailer />} />
+        </Route>
         {/* Removed extra closing tag */}
         <Route path='/person' element={<People />} />
         <Route path='/person/details/:id' element={<PersonsDetails />} />
+        <Route path='*' element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
 
     </div >

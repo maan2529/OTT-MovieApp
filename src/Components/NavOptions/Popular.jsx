@@ -12,9 +12,9 @@ const Popular = () => {
     const navigate = useNavigate()
     const [popular, setPopular] = useState([])
     const [category, setCategory] = useState('movie')
-
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
+
     const fetchPopular = async () => {
         try {
             const { data } = await instance.get(`${category}/popular`, {
@@ -40,7 +40,8 @@ const Popular = () => {
     const handleCategory = (e) => {
         setCategory(e.target.value)
     }
- 
+
+    console.log(popular);
 
 
     return popular.length > 0 ? (
@@ -55,7 +56,7 @@ const Popular = () => {
                 </div>
                 <div className='relative  right flex justify-end  items-center gap-5 h-full w-[65%]'>
                     <Topnav />
-                    <Dropdown title="category" arrOptions={[ 'tv', 'movie']} handleFun={handleCategory} />
+                    <Dropdown title="category" arrOptions={['tv', 'movie']} handleFun={handleCategory} />
 
                 </div>
             </div >
@@ -73,7 +74,7 @@ const Popular = () => {
 
 
                 >
-                    {popular.map((data, idx) => <Cards key={idx} data={data} />)}
+                    {popular.map((data, idx) => <Cards key={idx} data={data} title='movies'/>)}
 
                 </InfiniteScroll>
             </div>

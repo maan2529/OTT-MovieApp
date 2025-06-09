@@ -5,7 +5,7 @@ const Cards = ({ data, title }) => {
     console.log(data)
     return (
 
-        <Link to={`/${data.media_type || title}/details/${data.id}`} className='relative w-45 h-73 flex flex-col mx-[2%] ' >
+        <Link to={`/${title ||(( data.media_type === "movie") ? 'movies' : 'tvshows')}/details/${data.id}`} className='relative w-45 h-73 flex flex-col mx-[2%] ' >
             <img className='w-full h-[85%] shadow-[8px_17px_38px_2px_rgba(4,0,0,0.5)]' src={`https://image.tmdb.org/t/p/original/${data?.poster_path || data?.backdrop_path || data.profile_path}`} alt="cardsImg" />
             <div className='flex h-[15%] flex-col px-2 mt-2'>
                 <p className='text-zinc-300  w-full font-bold'>{data.title || data.name || data.original_name || data.original_title}</p>

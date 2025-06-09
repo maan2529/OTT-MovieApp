@@ -8,14 +8,16 @@ const Trailer = () => {
     const { pathname } = useLocation()
     const category = pathname.includes('movies') ? 'movie' : 'tv'
     console.log(category);
-    
+
     const trailerVideo = useSelector(state => state[category]?.info?.videos?.key)
+
     console.log(trailerVideo) // for tv it is undefined idk why...
-    return (
+    return trailerVideo && (
 
         <div className='bg-zinc-800/30 absolute w-full h-screen top-0 left-0 flex justify-center pt-20 select-none'>
 
             <i onClick={() => navigate(-1)} className="ri-close-fill absolute top-[3vw] right-[5vw] text-2xl cursor-pointer hover:text-[#6551CD]"></i>
+
             {trailerVideo ?
                 <div className='w-full h-full flex justify-center '>
                     <ReactPlayer
